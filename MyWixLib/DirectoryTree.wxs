@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Wix xmlns="http://schemas.microsoft.com/wix/2006/wi">
+	<Fragment>
+    <!--explain directory structure-->
+    <Directory Id="TARGETDIR" Name="SourceDir">
+
+      <!--Menu-->
+      <Directory Id="StartMenuFolder">
+        <Directory Id="MyShortcutFolder" Name="InstallStudies"/>
+      </Directory>
+
+      <!--Disk-->
+      <Directory Id="ProgramFilesFolder">
+        <Directory Id="INSTALLFOLDER" Name="InstallStudies">
+          <Directory Id="FILES" Name="Files"/>
+          <Directory Id="EmptyFolder" Name="ImEmpty"/>
+        </Directory>
+      </Directory>
+    </Directory>
+
+    <DirectoryRef Id="EmptyFolder">
+      <Component Id="EmptyFolder_CMP" Guid="E7DB0E1F-014C-4B39-8CEE-045623040C71" KeyPath="yes">
+        <CreateFolder/>
+      </Component>
+    </DirectoryRef>
+
+    <!--define location of components after installation-->
+    <DirectoryRef Id="FILES">
+      <Component Id="mainfiletext_component" Guid="*" >
+        <File Id="mainfiletext_file" Source="mainfile.txt" KeyPath="yes"  />
+      </Component>
+      <Component Id="secondaryfiletext_component" Guid="*">
+        <File Id="secondaryfiletext_file" Source="secondaryfile.txt" KeyPath="yes"/>
+      </Component>
+    </DirectoryRef>
+  
+  </Fragment>
+</Wix>
