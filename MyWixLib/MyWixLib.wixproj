@@ -4,10 +4,10 @@
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">x86</Platform>
     <ProductVersion>3.10</ProductVersion>
-    <ProjectGuid>7432ea3c-5379-429f-b793-c1b3d1e102a9</ProjectGuid>
+    <ProjectGuid>4da45710-12c2-4c32-a66b-4606d215f887</ProjectGuid>
     <SchemaVersion>2.0</SchemaVersion>
-    <OutputName>InstallStudies</OutputName>
-    <OutputType>Package</OutputType>
+    <OutputName>MyWixLib</OutputName>
+    <OutputType>Library</OutputType>
     <WixTargetsPath Condition=" '$(WixTargetsPath)' == '' AND '$(MSBuildExtensionsPath32)' != '' ">$(MSBuildExtensionsPath32)\Microsoft\WiX\v3.x\Wix.targets</WixTargetsPath>
     <WixTargetsPath Condition=" '$(WixTargetsPath)' == '' ">$(MSBuildExtensionsPath)\Microsoft\WiX\v3.x\Wix.targets</WixTargetsPath>
   </PropertyGroup>
@@ -15,30 +15,14 @@
     <OutputPath>bin\$(Configuration)\</OutputPath>
     <IntermediateOutputPath>obj\$(Configuration)\</IntermediateOutputPath>
     <DefineConstants>Debug</DefineConstants>
-    <SuppressAllWarnings>False</SuppressAllWarnings>
-    <Pedantic>True</Pedantic>
-    <SuppressIces>ICE102</SuppressIces>
-    <CompilerAdditionalOptions>
-    </CompilerAdditionalOptions>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|x86' ">
     <OutputPath>bin\$(Configuration)\</OutputPath>
     <IntermediateOutputPath>obj\$(Configuration)\</IntermediateOutputPath>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Include="Product.wxs" />
-  </ItemGroup>
-  <ItemGroup>
-    <WixExtension Include="WixUIExtension">
-      <HintPath>$(WixExtDir)\WixUIExtension.dll</HintPath>
-      <Name>WixUIExtension</Name>
-    </WixExtension>
-  </ItemGroup>
-  <ItemGroup>
-    <WixLibrary Include="MyWixLib">
-      <HintPath>..\MyWixLib\bin\Debug\MyWixLib.wixlib</HintPath>
-      <Name>MyWixLib</Name>
-    </WixLibrary>
+    <Compile Include="Components.wxs" />
+    <Compile Include="DirectoryTree.wxs" />
   </ItemGroup>
   <Import Project="$(WixTargetsPath)" />
   <!--

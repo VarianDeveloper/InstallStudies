@@ -1,28 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Wix xmlns="http://schemas.microsoft.com/wix/2006/wi">
   <Product Id="*" Name="InstallStudies" Language="1033" Version="1.0.0.0" Manufacturer="Alex Beyderman" UpgradeCode="E7DB0E1F-014C-4B39-8CEE-045623040C73">
+    
     <Package InstallerVersion="200" Compressed="yes" InstallScope="perMachine" />
+
+    <!--UI extension - minimal license dialog box-->
+    <UIRef Id="WixUI_Minimal"/>
 
     <MajorUpgrade DowngradeErrorMessage="A newer version of [ProductName] is already installed." />
     <MediaTemplate  EmbedCab="yes"/>
-
-
-    <!--explain directory structure-->
-    <Directory Id="TARGETDIR" Name="SourceDir">
-
-      <!--Menu-->
-      <Directory Id="StartMenuFolder">
-        <Directory Id="MyShortcutFolder" Name="InstallStudies"/>
-      </Directory>
-
-      <!--Disk-->
-      <Directory Id="ProgramFilesFolder">
-        <Directory Id="INSTALLFOLDER" Name="InstallStudies">
-          <Directory Id="FILES" Name="Files"/>
-        </Directory>
-      </Directory>
-    </Directory>
-
+    
     <!--define shortcut under specific menu location-->
     <DirectoryRef Id="MyShortcutFolder">
       <Component Id="MainShortcut" Guid="E7DB0E1F-014C-4B39-8CEE-045623040C72" >
@@ -31,26 +18,19 @@
         <RegistryValue Root="HKCU" Key="Software/Alex/InstallStudies" Name="installed" Type="integer" Value="1" KeyPath="yes"/>
 
         <!--uninstall the app shortcut-->
-        <Shortcut Id="UninstallShortcut" Name="Uninstall the App" 
+        <Shortcut Id="UninstallShortcut" Name="Uninstall the App"
                   Description="Uninstall the App" Target="[System64Folder]msiexec.exe" Arguments="/x [ProductCode]" />
       </Component>
     </DirectoryRef>
-
-    <!--define location of components after installation-->
-    <DirectoryRef Id="FILES">
-      <Component Id="mainfiletext_component" Guid="*" >
-        <File Id="mainfiletext_file" Source="mainfile.txt" KeyPath="yes"  />
-      </Component>
-      <Component Id="secondaryfiletext_component" Guid="*">
-        <File Id="secondaryfiletext_file" Source="secondaryfile.txt" KeyPath="yes"/>
-      </Component>
-    </DirectoryRef>
-
+    
+    
     <!--define components to be installed under every feature-->
     <Feature Id="Main" Title="Main Product" Level="1" Absent="disallow" Description="You must install this feature anyways">
-      <ComponentRef Id="mainfiletext_component"/>
+      <ComponentGroupRef Id="All_FILES_COMPONENTS"/>
       <ComponentRef Id="MainShortcut"/>
+      <ComponentRef Id="EmptyFolder_CMP"/>
     </Feature>
+    
     <Feature Id="Secondary" Title="Secondary Product" Level="1">
       <ComponentRef Id="secondaryfiletext_component"/>
       <ComponentRef Id="MainShortcut"/>
