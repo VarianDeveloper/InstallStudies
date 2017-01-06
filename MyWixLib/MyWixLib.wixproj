@@ -23,6 +23,7 @@
   <ItemGroup>
     <Compile Include="Components.wxs" />
     <Compile Include="DirectoryTree.wxs" />
+    <Compile Include="Properties.wxs" />
   </ItemGroup>
   <Import Project="$(WixTargetsPath)" />
   <!--

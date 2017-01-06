@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Wix xmlns="http://schemas.microsoft.com/wix/2006/wi">
   <Product Id="*" Name="InstallStudies" Language="1033" Version="1.0.0.0" Manufacturer="Alex Beyderman" UpgradeCode="E7DB0E1F-014C-4B39-8CEE-045623040C73">
-    
+
     <Package InstallerVersion="200" Compressed="yes" InstallScope="perMachine" />
 
     <!--UI extension - minimal license dialog box-->
@@ -9,7 +9,7 @@
 
     <MajorUpgrade DowngradeErrorMessage="A newer version of [ProductName] is already installed." />
     <MediaTemplate  EmbedCab="yes"/>
-    
+
     <!--define shortcut under specific menu location-->
     <DirectoryRef Id="MyShortcutFolder">
       <Component Id="MainShortcut" Guid="E7DB0E1F-014C-4B39-8CEE-045623040C72" >
@@ -22,19 +22,24 @@
                   Description="Uninstall the App" Target="[System64Folder]msiexec.exe" Arguments="/x [ProductCode]" />
       </Component>
     </DirectoryRef>
-    
-    
+
+
     <!--define components to be installed under every feature-->
     <Feature Id="Main" Title="Main Product" Level="1" Absent="disallow" Description="You must install this feature anyways">
       <ComponentGroupRef Id="All_FILES_COMPONENTS"/>
       <ComponentRef Id="MainShortcut"/>
       <ComponentRef Id="EmptyFolder_CMP"/>
     </Feature>
-    
+
     <Feature Id="Secondary" Title="Secondary Product" Level="1">
       <ComponentRef Id="secondaryfiletext_component"/>
       <ComponentRef Id="MainShortcut"/>
     </Feature>
+
+    <PropertyRef Id="MyName"/>
+
+    <Condition Message="My name is [MyName]"><![CDATA[Installed]]></Condition>
+
 
   </Product>
 </Wix>
