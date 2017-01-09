@@ -37,8 +37,7 @@
     </Feature>
 
     <PropertyRef Id="MyName"/>
-
-    <Condition Message="My name is [MyName]"><![CDATA[Installed]]></Condition>
+    <Condition Message="My name must be Alex and not [MyName]"><![CDATA[MyName = "Alex"]]></Condition>
 
 
   </Product>

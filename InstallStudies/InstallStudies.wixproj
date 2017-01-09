@@ -40,6 +40,13 @@
       <Name>MyWixLib</Name>
     </WixLibrary>
   </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Files" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Files\mainfile.txt" />
+    <Content Include="Files\secondaryfile.txt" />
+  </ItemGroup>
   <Import Project="$(WixTargetsPath)" />
   <!--
 	To modify your build process, add your task inside one of the targets below and uncomment it.

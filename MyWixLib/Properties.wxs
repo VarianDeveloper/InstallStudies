@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Wix xmlns="http://schemas.microsoft.com/wix/2006/wi">
   <Fragment>
-    <Property Id="MyName" Value="Alex" Hidden="yes"/>
+    <Property Id="MyName" Value="Masha" Hidden="yes"/>
   </Fragment>
 </Wix>

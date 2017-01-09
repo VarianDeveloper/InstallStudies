@@ -27,10 +27,10 @@
     <!--define location of components after installation-->
     <DirectoryRef Id="FILES">
       <Component Id="mainfiletext_component" Guid="*" >
-        <File Id="mainfiletext_file" Source="mainfile.txt" KeyPath="yes"  />
+        <File Id="mainfiletext_file" Source=".\Files\mainfile.txt" KeyPath="yes"  />
       </Component>
       <Component Id="secondaryfiletext_component" Guid="*">
-        <File Id="secondaryfiletext_file" Source="secondaryfile.txt" KeyPath="yes"/>
+        <File Id="secondaryfiletext_file" Source=".\Files\secondaryfile.txt" KeyPath="yes"/>
       </Component>
     </DirectoryRef>
   
