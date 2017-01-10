@@ -1,6 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Wix xmlns="http://schemas.microsoft.com/wix/2006/wi">
-	<Fragment>
+  <Fragment>
+
+    <PropertyRef Id="NotMandatoryForEmptyFolder"/>
+
     <!--explain directory structure-->
     <Directory Id="TARGETDIR" Name="SourceDir">
 
@@ -28,11 +31,16 @@
     <DirectoryRef Id="FILES">
       <Component Id="mainfiletext_component" Guid="*" >
         <File Id="mainfiletext_file" Source=".\Files\mainfile.txt" KeyPath="yes"  />
+        <Condition>NOT MyName = NotMandatoryForEmptyFolder</Condition>
+      </Component>
+      <Component Id="mainfiletext_for_michael_component" Guid="*" >
+        <File Id="mainfiletext_for_michael_file" Source=".\Files\mainfile - for michael.txt" KeyPath="yes"  />
+        <Condition>MyName = NotMandatoryForEmptyFolder</Condition>
       </Component>
       <Component Id="secondaryfiletext_component" Guid="*">
         <File Id="secondaryfiletext_file" Source=".\Files\secondaryfile.txt" KeyPath="yes"/>
       </Component>
     </DirectoryRef>
-  
+
   </Fragment>
 </Wix>

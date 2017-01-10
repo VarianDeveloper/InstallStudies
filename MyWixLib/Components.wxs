@@ -1,9 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Wix xmlns="http://schemas.microsoft.com/wix/2006/wi">
-	<Fragment>
+  <Fragment>
     <ComponentGroup Id="All_FILES_COMPONENTS">
       <ComponentRef Id="mainfiletext_component"/>
+      <ComponentRef Id="mainfiletext_for_michael_component"/>
       <ComponentRef Id="secondaryfiletext_component"/>
     </ComponentGroup>
-	</Fragment>
+
+  </Fragment>
 </Wix>

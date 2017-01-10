@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Wix xmlns="http://schemas.microsoft.com/wix/2006/wi">
+  <Fragment>
+
+    <PropertyRef Id="NotMandatoryForEmptyFolder"/>
+
+    <!--define components to be installed under every feature-->
+    <Feature Id="Main" Title="Install all files" Level="1" Description="Will install all files">
+      <ComponentGroupRef Id="All_FILES_COMPONENTS"/>
+      <ComponentRef Id="MainShortcut"/>
+    </Feature>
+
+    <Feature Id="Secondary" Title="Install only secondary file" Level="2" Description="Will install only secondary file">
+      <ComponentRef Id="secondaryfiletext_component"/>
+      <ComponentRef Id="MainShortcut"/>
+    </Feature>
+
+    <Feature Id="EmptyFolder" Title="Install empty folder" Level="2"
+             Description=
+             "Will install empty folder. This feature is NOT mandatory for [NotMandatoryForEmptyFolder] ONLY, but current name is [MyName]">
+      <ComponentRef Id="EmptyFolder_CMP"/>
+      <ComponentRef Id="MainShortcut"/>
+      <Condition Level="1">
+        <![CDATA[NOT REMOVE = "ALL" AND NOT MyName = NotMandatoryForEmptyFolder]]>
+      </Condition>
+    </Feature>
+  </Fragment>
+</Wix>

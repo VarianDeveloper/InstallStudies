@@ -5,7 +5,7 @@
     <Package InstallerVersion="200" Compressed="yes" InstallScope="perMachine" />
 
     <!--UI extension - minimal license dialog box-->
-    <UIRef Id="WixUI_Minimal"/>
+    <UIRef Id="WixUI_FeatureTree"/>
 
     <MajorUpgrade DowngradeErrorMessage="A newer version of [ProductName] is already installed." />
     <MediaTemplate  EmbedCab="yes"/>
@@ -23,22 +23,23 @@
       </Component>
     </DirectoryRef>
 
+    <FeatureRef Id="Main"/>
+    <FeatureRef Id="Secondary"/>
+    <FeatureRef Id="EmptyFolder"/>
 
-    <!--define components to be installed under every feature-->
-    <Feature Id="Main" Title="Main Product" Level="1" Absent="disallow" Description="You must install this feature anyways">
-      <ComponentGroupRef Id="All_FILES_COMPONENTS"/>
-      <ComponentRef Id="MainShortcut"/>
-      <ComponentRef Id="EmptyFolder_CMP"/>
-    </Feature>
-
-    <Feature Id="Secondary" Title="Secondary Product" Level="1">
-      <ComponentRef Id="secondaryfiletext_component"/>
-      <ComponentRef Id="MainShortcut"/>
-    </Feature>
-
-    <PropertyRef Id="MyName"/>
-    <Condition Message="My name must be Alex and not [MyName]"><![CDATA[MyName = "Alex"]]></Condition>
-
+    <CustomActionRef Id="FirstUI"/>
+    <CustomActionRef Id="FirstEXE"/>
+    <CustomActionRef Id="SecondEXE"/>
+    
+    <InstallUISequence>
+      <Custom Action="FirstUI" After="CostFinalize"/>
+    </InstallUISequence>
+    
+    <InstallExecuteSequence>
+      <Custom Action="FirstEXE" After="InstallInitialize"/>
+      <Custom Action="SecondEXE" After="FirstEXE"/>
+    </InstallExecuteSequence>
+   
 
   </Product>
 </Wix>

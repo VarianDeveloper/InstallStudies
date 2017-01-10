@@ -44,6 +44,7 @@
     <Folder Include="Files" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Files\mainfile - for michael.txt" />
     <Content Include="Files\mainfile.txt" />
     <Content Include="Files\secondaryfile.txt" />
   </ItemGroup>

@@ -22,7 +22,9 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="Components.wxs" />
+    <Compile Include="CustomAction.wxs" />
     <Compile Include="DirectoryTree.wxs" />
+    <Compile Include="Features.wxs" />
     <Compile Include="Properties.wxs" />
   </ItemGroup>
   <Import Project="$(WixTargetsPath)" />
