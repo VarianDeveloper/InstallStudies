@@ -1,8 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Wix xmlns="http://schemas.microsoft.com/wix/2006/wi">
   <Fragment>
-    <CustomAction Id="FirstUI" Execute="immediate" Return="check"/>
-    <CustomAction Id="FirstEXE" Execute="deferred" Return="check"/>
-    <CustomAction Id="SecondEXE" Execute="deferred" Return="check"/>
+    <Binary Id="CustomAction" SourceFile="$(var.CustomActions.TargetDir)CustomActions.CA.dll" />
+    
+    <CustomAction Id="FirstUI" Execute="immediate" Return="check" BinaryKey="CustomAction" DllEntry="CustomAction1"/>
+    <!--<CustomAction Id="FirstEXE" Execute="deferred" Return="check"/>
+    <CustomAction Id="SecondEXE" Execute="deferred" Return="check"/>-->
   </Fragment>
 </Wix>

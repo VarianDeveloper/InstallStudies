@@ -28,16 +28,16 @@
     <FeatureRef Id="EmptyFolder"/>
 
     <CustomActionRef Id="FirstUI"/>
-    <CustomActionRef Id="FirstEXE"/>
-    <CustomActionRef Id="SecondEXE"/>
+    <!--<CustomActionRef Id="FirstEXE"/>
+    <CustomActionRef Id="SecondEXE"/>-->
     
     <InstallUISequence>
       <Custom Action="FirstUI" After="CostFinalize"/>
     </InstallUISequence>
     
     <InstallExecuteSequence>
-      <Custom Action="FirstEXE" After="InstallInitialize"/>
-      <Custom Action="SecondEXE" After="FirstEXE"/>
+      <!--<Custom Action="FirstEXE" After="InstallInitialize"/>
+      <Custom Action="SecondEXE" After="FirstEXE"/>-->
     </InstallExecuteSequence>
    
 
