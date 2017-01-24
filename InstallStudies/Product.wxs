@@ -27,19 +27,21 @@
     <FeatureRef Id="Secondary"/>
     <FeatureRef Id="EmptyFolder"/>
 
-    <CustomActionRef Id="FirstUI"/>
+    <!--<CustomActionRef Id="FirstUI"/>
     <CustomActionRef Id="FirstEXE"/>
-    <CustomActionRef Id="SecondEXE"/>
+    <CustomActionRef Id="SecondEXE"/>-->
+
+    <CustomActionRef Id="GetInstallLocation"/>
     
     <InstallUISequence>
-      <Custom Action="FirstUI" After="CostFinalize"/>
+      <!--<Custom Action="FirstUI" After="CostFinalize"/>-->
     </InstallUISequence>
     
     <InstallExecuteSequence>
-      <Custom Action="FirstEXE" After="InstallInitialize"/>
-      <Custom Action="SecondEXE" After="FirstEXE"/>
+      <!--<Custom Action="FirstEXE" After="InstallInitialize"/>
+      <Custom Action="SecondEXE" After="FirstEXE"/>-->
+      <Custom Action="GetInstallLocation" After="InstallInitialize"/>
     </InstallExecuteSequence>
-   
 
   </Product>
 </Wix>
