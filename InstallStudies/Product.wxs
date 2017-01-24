@@ -4,6 +4,8 @@
 
     <Package InstallerVersion="200" Compressed="yes" InstallScope="perMachine" />
 
+    <Binary Id="myCustomActionsDLL" SourceFile="$(var.CustomActionNew.TargetDir)CustomActionNew.CA.dll"/>
+
     <!--UI extension - minimal license dialog box-->
     <UIRef Id="WixUI_FeatureTree"/>
 
@@ -31,16 +33,20 @@
     <CustomActionRef Id="FirstEXE"/>
     <CustomActionRef Id="SecondEXE"/>-->
 
-    <CustomActionRef Id="GetInstallLocation"/>
-    
+    <CustomActionRef Id="SetAppDataDir"/>
+    <CustomAction Id="RememberInstallLocation"  Value="[CommonAppDataFolder]MyGreatProduct" Property="APPINSTALLLOCATION"/>
+    <SetProperty Id="OneTwoThreeProperty" Value="123" After="InstallInitialize" Sequence="execute"/>
+    <CustomAction Id="CA_CustomActionNew" BinaryKey="myCustomActionsDLL" DllEntry="CustomAction1"  Execute="immediate" />
+
     <InstallUISequence>
-      <!--<Custom Action="FirstUI" After="CostFinalize"/>-->
+      <Custom Action="CA_CustomActionNew" After="CostFinalize"/>
     </InstallUISequence>
-    
+
     <InstallExecuteSequence>
       <!--<Custom Action="FirstEXE" After="InstallInitialize"/>
       <Custom Action="SecondEXE" After="FirstEXE"/>-->
-      <Custom Action="GetInstallLocation" After="InstallInitialize"/>
+      <Custom Action="RememberInstallLocation" After="InstallInitialize"/>
+      <Custom Action="SetAppDataDir" Before="InstallFiles"/>
     </InstallExecuteSequence>
 
   </Product>

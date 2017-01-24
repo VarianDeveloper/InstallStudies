@@ -5,6 +5,8 @@
     <CustomAction Id="FirstEXE" Execute="deferred" Return="check"/>
     <CustomAction Id="SecondEXE" Execute="deferred" Return="check"/>-->
 
-    <CustomAction Id="GetInstallLocation" Directory="INSTALLFOLDER" Value="[CommonAppDataFolder]MyProduct"/>
+    <CustomAction Id="SetAppDataDir" Directory="FILES" Value="[CommonAppDataFolder]MyGreatProductFiles"/>
   </Fragment>
 </Wix>
+
+<!--Directory="INSTALLFOLDER"=-->
