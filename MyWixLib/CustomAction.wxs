@@ -1,11 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Wix xmlns="http://schemas.microsoft.com/wix/2006/wi">
   <Fragment>
-    <!--<CustomAction Id="FirstUI" Execute="immediate" Return="check"/>
-    <CustomAction Id="FirstEXE" Execute="deferred" Return="check"/>
-    <CustomAction Id="SecondEXE" Execute="deferred" Return="check"/>-->
 
+    <CustomAction Id="CA_CustomActionNew" BinaryKey="myCustomActionsDLL" DllEntry="CustomAction1"  Execute="immediate" />
     <CustomAction Id="SetAppDataDir" Directory="FILES" Value="[CommonAppDataFolder]MyGreatProductFiles"/>
+    <CustomAction Id="RememberInstallLocation"  Value="[CommonAppDataFolder]MyGreatProduct" Property="APPINSTALLLOCATION"/>
   </Fragment>
 </Wix>
 

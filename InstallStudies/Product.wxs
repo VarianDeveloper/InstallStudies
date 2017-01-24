@@ -29,22 +29,18 @@
     <FeatureRef Id="Secondary"/>
     <FeatureRef Id="EmptyFolder"/>
 
-    <!--<CustomActionRef Id="FirstUI"/>
-    <CustomActionRef Id="FirstEXE"/>
-    <CustomActionRef Id="SecondEXE"/>-->
-
+  
     <CustomActionRef Id="SetAppDataDir"/>
-    <CustomAction Id="RememberInstallLocation"  Value="[CommonAppDataFolder]MyGreatProduct" Property="APPINSTALLLOCATION"/>
+    <CustomActionRef Id="CA_CustomActionNew"/>
+    <CustomActionRef Id="RememberInstallLocation"/>
+    
     <SetProperty Id="OneTwoThreeProperty" Value="123" After="InstallInitialize" Sequence="execute"/>
-    <CustomAction Id="CA_CustomActionNew" BinaryKey="myCustomActionsDLL" DllEntry="CustomAction1"  Execute="immediate" />
 
     <InstallUISequence>
       <Custom Action="CA_CustomActionNew" After="CostFinalize"/>
     </InstallUISequence>
 
     <InstallExecuteSequence>
-      <!--<Custom Action="FirstEXE" After="InstallInitialize"/>
-      <Custom Action="SecondEXE" After="FirstEXE"/>-->
       <Custom Action="RememberInstallLocation" After="InstallInitialize"/>
       <Custom Action="SetAppDataDir" Before="InstallFiles"/>
     </InstallExecuteSequence>
